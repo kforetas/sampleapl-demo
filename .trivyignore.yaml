@@ -1,0 +1,23 @@
+# Trivy の除外設定
+# 除外するときは必ず根拠 (statement) と見直し期限 (expired_at) を記載すること
+#
+# setuptools 53.0.0 (/opt/app-root の venv)
+#   RHEL 9 の python3-setuptools と同一ファイル (sha256 一致を確認済み) で、
+#   Red Hat がバックポートで修正済み。Trivy はバージョン番号 53.0.0 だけで判定するため誤検知となる。
+#   イメージ内の RPM: python3-setuptools-53.0.0-15.el9
+vulnerabilities:
+  - id: CVE-2022-40897
+    purls:
+      - pkg:pypi/setuptools@53.0.0
+    statement: RHEL 9 python-setuptools でバックポート修正済み (RHSA-2023:0952, 53.0.0-10.el9_1.1)
+    expired_at: 2027-09-30
+  - id: CVE-2024-6345
+    purls:
+      - pkg:pypi/setuptools@53.0.0
+    statement: RHEL 9 python-setuptools でバックポート修正済み (RHSA-2024:5534, 53.0.0-12.el9_4.1)
+    expired_at: 2027-09-30
+  - id: CVE-2025-47273
+    purls:
+      - pkg:pypi/setuptools@53.0.0
+    statement: RHEL 9 python-setuptools でバックポート修正済み (RHSA-2025:10407, 53.0.0-13.el9_6.1)
+    expired_at: 2027-09-30
